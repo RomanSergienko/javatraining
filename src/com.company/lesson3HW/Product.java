@@ -1,15 +1,19 @@
 package com.company.lesson3HW;
 
+import java.util.Date;
+
 public class Product {
     private String name;
     private double price;
     private double deliveryCost;
+    private Date datePurchase;
 
 
-    public Product(String name, double price, double deliveryCost) {
+    public Product(String name, double price, double deliveryCost, Date datePurchase) {
         this.name = name;
         this.price = price;
         this.deliveryCost = deliveryCost;
+        this.datePurchase = datePurchase;
     }
 
     public String getName() {
@@ -36,4 +40,11 @@ public class Product {
         this.deliveryCost = deliveryCost;
     }
 
+    public Date getDatePurchase() {
+        return datePurchase;
+    }
+
+    public void setDatePurchase(Date datePurchase) {
+        this.datePurchase = datePurchase;
+    }
 }
