@@ -41,7 +41,7 @@ public class Main {
         System.out.println(summ);
     }
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args)  {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         //Даты покупки товаров
@@ -49,19 +49,36 @@ public class Main {
         String strDate2 = "04/05/2018";
 
 
-        Product product1 = new Product("Молоко", 45.0, 2.5, sdf.parse(strDate1));
-        Product product2 = new Product("Хлеб ржаной", 25.5, 4.2, sdf.parse(strDate2));
+        Product product1 = null;
+        Product product2 = null;
+        try {
+            product1 = new Product("Молоко", 45.0, 2.5, sdf.parse(strDate1));
+            product2 = new Product("Хлеб ржаной", 25.5, 4.2, sdf.parse(strDate2));
+        } catch (ParseException e) {
+            System.out.println("Ошибка парсинга даты");
+            e.printStackTrace();
+        }
 
-        Menu menu = new Menu();
-        Map<Product, Integer> productIntegerMap = new HashMap<>();
-        productIntegerMap.put(product1, 10);
-        productIntegerMap.put(product2, 15);
-        menu.setProducts(productIntegerMap);
+        if (product1 != null && product2 !=null){
+            Menu menu = new Menu();
+            Map<Product, Integer> productIntegerMap = new HashMap<>();
+            productIntegerMap.put(product1, 10);
+            productIntegerMap.put(product2, 15);
+            menu.setProducts(productIntegerMap);
 
 
-        //Указываем дату, позднее которой должны быть даты покупки товаров
-        String strDate3 = "2/05/2018";
+            //Указываем дату, позднее которой должны быть даты покупки товаров
+            String strDate3 = "2/05/2018";
 
-        calculateCostProducts(menu, sdf.parse(strDate3));
+            try {
+                calculateCostProducts(menu, sdf.parse(strDate3));
+            } catch (ParseException e) {
+                System.out.println("Ошибка парсинга даты");
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Продукты не заданы");
+        }
+
     }
 }
