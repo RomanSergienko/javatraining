@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.lesson3HW.Menu;
 import com.company.lesson3HW.Product;
+import com.company.lesson6.MapUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -62,10 +63,12 @@ public class Main {
         if (product1 != null && product2 !=null){
             Menu menu = new Menu();
             Map<Product, Integer> productIntegerMap = new HashMap<>();
-            productIntegerMap.put(product1, 10);
+            productIntegerMap.put(product1, 55);
             productIntegerMap.put(product2, 15);
             menu.setProducts(productIntegerMap);
 
+
+            productIntegerMap = MapUtil.sortByValue(productIntegerMap);
 
             //Указываем дату, позднее которой должны быть даты покупки товаров
             String strDate3 = "2/05/2018";
